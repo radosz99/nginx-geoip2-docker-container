@@ -67,7 +67,7 @@ http {
     }
 
     map $request $request_path {
-    "~^(?P<path>[^?]*)(\?.*)?$"  $path;
+        "~^(?P<path>[^?]*)(\?.*)?$"  $path;
     }
 
     log_format json_single_line escape=json '{ "time_local": "$time_local", "remote_addr": "$remote_addr", "remote_user": "$remote_user", "request": "$request", "request_path": "$request_path", "query_string": "$query_string", "status": "$status", "body_bytes_sent": "$body_bytes_sent", "request_time": "$request_time", "http_referer": "$http_referer", "http_user_agent": "$http_user_agent", "request_method": "$request_method", "http_host": "$host", "uri": "$uri", "server_protocol": "$server_protocol", "connection": "$connection", "bytes_sent": "$bytes_sent", "request_length": "$request_length", "ssl_protocol": "$ssl_protocol", "ssl_cipher": "$ssl_cipher", "scheme": "$scheme", "upstream_addr": "$upstream_addr", "upstream_response_time": "$upstream_response_time", "upstream_status": "$upstream_status", "gzip_ratio": "$gzip_ratio", "geoip2_country_code": "$geoip2_data_country_code", "geoip2_country_name": "$geoip2_data_country_name", "geoip2_city_name": "$geoip2_data_city_name", "geoip2_latitude": "$geoip2_data_latitude", "geoip2_longitude": "$geoip2_data_longitude" }';
