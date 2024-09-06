@@ -1,0 +1,15 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - GEOIP_ACCOUNT_ID=${GEOIP_ACCOUNT_ID}
+        - GEOIP_LICENSE_KEY=${GEOIP_LICENSE_KEY}
+    container_name: nginx-geoip2
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./logs:/var/log/nginx
+    env_file:
+      - docker.env
+    command: nginx -g "daemon off;"
